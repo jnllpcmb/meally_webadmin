@@ -57,7 +57,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/Store.html">
+          <a class="nav-link text-white " href="../pages/tables.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -73,7 +73,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/Admin.html">
+          <a class="nav-link text-white " href="../pages/virtual-reality.html">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
@@ -81,7 +81,14 @@
           </a>
         </li>
        
-      
+        <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/notifications.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">notifications</i>
+            </div>
+            <span class="nav-link-text ms-1">Notifications</span>
+          </a>
+        </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
@@ -230,82 +237,8 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <h4 class="mb-0">100</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span>Total Customer</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-              
-                <h4 class="mb-0">50</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"> </span>Total Store</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
-              </div>
-              <div class="text-end pt-1">
-               
-                <h4 class="mb-0">52</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-danger text-sm font-weight-bolder"></span> Total Saved Food</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">weekend</i>
-              </div>
-              <div class="text-end pt-1">
-                <h4 class="mb-0">30</h4>
-              </div>
-            </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span>Number of Daily User</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
 
-     
-     
-  </div>
-</div>
-</div>
+
             
       <div class="row mb-4">
         <div class="col-lg-10 col-md-6 mb-md-0 mb-4">
@@ -313,7 +246,16 @@
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6> New store to be Verified</h6>
+                  <h6> Customers/Customers List</h6>
+
+                  <div class="dropdown float-lg-end pe-1">
+                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa fa-ellipsis-v text-secondary"></i>
+                    </a>
+                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                      <li><a class="dropdown-item border-radius-md" href="Customer.html">Customers List </a></li>
+                      <li><a class="dropdown-item border-radius-md" href="Cancelorder.html">Cancel Orders</a></li>
+
                   
                 </div>
               
@@ -324,35 +266,35 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full name</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Store name</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Registered</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fullname</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date Register</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                 
+
+
                     </tr>
                   </thead>
                   <tbody>
 
 
+                 
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           
                           <div class="d-flex flex-column justify-content-center">
-                            <h6><a href="newverified.html">Maria Delos Reyes</a></h6>
+                            <h6 class="mb-0 text-sm">Pedro San Juan</h6>
                           </div>
                         </div>
                       </td>
-                      <td>
-                        <h6><a href="newverified.html" class="mb-0 text-sm">Maria Store</a></h6>
+
+                      <td >
+                        <h6 class="mb-0 text-sm">October 21, 2021</h6>
+                      </td>
 
                       <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Sari-Sari </span>
+                        <a href  class="text-xs font-weight-bold"> Active </span>
                       </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">12/13/22</span>
                             </div>
                           </div>
                         </div>
@@ -360,166 +302,51 @@
                     </tr>
 
                     <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Maria Delos Reyes</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm">Maria Store</h6>
-
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Sari-Sari </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">12/13/22</span>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">Lancelot Gatotckha</h6>
                             </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-
-
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Maria Delos Reyes</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm">Maria Store</h6>
-
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Sari-Sari </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">12/13/22</span>
+                        </td>
+  
+                        <td >
+                          <h6 class="mb-0 text-sm">October 21, 2021</h6>
+                        </td>
+  
+                        <td class="align-middle text-center text-sm">
+                          <a href  class="text-xs font-weight-bold"> Suspended Until November 21 2021 </span>
+                        </td>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-
-
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Maria Delos Reyes</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm">Maria Store</h6>
-
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Sari-Sari </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">12/13/22</span>
+                        </td>
+                      </tr>
+                   
+                      <tr>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">Miya Alucard</h6>
                             </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-
-
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Maria Delos Reyes</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm">Maria Store</h6>
-
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Sari-Sari </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">12/13/22</span>
+                        </td>
+  
+                        <td >
+                          <h6 class="mb-0 text-sm">December 21, 2021</h6>
+                        </td>
+  
+                        <td class="align-middle text-center text-sm">
+                          <a href  class="text-xs font-weight-bold"> Deactivated </span>
+                        </td>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-
-
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Maria Delos Reyes</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm">Maria Store</h6>
-
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Sari-Sari </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">12/13/22</span>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-
-
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Maria Delos Reyes</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <h6 class="mb-0 text-sm">Maria Store</h6>
-
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Sari-Sari </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">12/13/22</span>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-
+                        </td>
+                      </tr>
+                   
 
                     
                     
