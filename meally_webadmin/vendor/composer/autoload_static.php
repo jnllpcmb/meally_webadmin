@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit97a44a495a08c5d707d7d40ad535dadf
+class ComposerStaticInita419789e4dd072782a1fb451b4841498
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -24,7 +24,6 @@ class ComposerStaticInit97a44a495a08c5d707d7d40ad535dadf
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'StellaMaris\\Clock\\' => 18,
         ),
         'R' => 
         array (
@@ -79,10 +78,6 @@ class ComposerStaticInit97a44a495a08c5d707d7d40ad535dadf
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
-        ),
-        'StellaMaris\\Clock\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stella-maris/clock/src',
         ),
         'Rize\\' => 
         array (
@@ -185,9 +180,9 @@ class ComposerStaticInit97a44a495a08c5d707d7d40ad535dadf
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit97a44a495a08c5d707d7d40ad535dadf::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit97a44a495a08c5d707d7d40ad535dadf::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit97a44a495a08c5d707d7d40ad535dadf::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita419789e4dd072782a1fb451b4841498::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita419789e4dd072782a1fb451b4841498::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita419789e4dd072782a1fb451b4841498::$classMap;
 
         }, null, ClassLoader::class);
     }
