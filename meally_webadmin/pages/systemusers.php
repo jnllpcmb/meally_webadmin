@@ -116,7 +116,7 @@
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">System Management</li>
-            <li class="font-weight-bolder mb-0 bre  adcrumb-item text-sm text-dark active" aria-current="page">Users</li>
+            <li class="font-weight-bolder mb-0 breadcrumb-item text-sm text-dark active" aria-current="page">Users</li>
           </ol>
           </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -130,10 +130,10 @@
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                  <a class="dropdown-item border-radius-md" href="profile.php">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="../assets/img/icons8-cog-100.png" class="avatar avatar-sm  me-3 ">
+                        <img src="../assets/img/icons8-settings-50.png" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -147,10 +147,10 @@
                   </a>
                 </li>
                 <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                  <a class="dropdown-item border-radius-md" href="signout.php">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="../assets/img/icons8-shutdown-52.png" class="avatar avatar-sm  me-3 ">
+                        <img src="../assets/img/icons8-shutdown-50.png" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">

@@ -134,10 +134,10 @@ session_start();
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                  <a class="dropdown-item border-radius-md" href="profile.php">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="../assets/img/icons8-cog-100.png" class="avatar avatar-sm  me-3 ">
+                        <img src="../assets/img/icons8-settings-50.png" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -151,10 +151,10 @@ session_start();
                   </a>
                 </li>
                 <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                  <a class="dropdown-item border-radius-md" href="signout.php">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="../assets/img/icons8-shutdown-52.png" class="avatar avatar-sm  me-3 ">
+                        <img src="../assets/img/icons8-shutdown-50.png" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                       <h6 class="text-sm font-weight-normal mb-1">
