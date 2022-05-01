@@ -151,7 +151,7 @@ session_start();
                   </a>
                 </li>
                 <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="signout.php">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
                         <img src="../assets/img/icons8-shutdown-50.png" class="avatar avatar-sm  me-3 ">
