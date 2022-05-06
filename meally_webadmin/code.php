@@ -1,6 +1,12 @@
 <?php
 
 use Firebase\Auth\Token\Exception\InvalidToken;
+use Google\Cloud\Core\Exception\BadRequestException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Promise\RejectedPromise;
+use Kreait\Firebase\Exception\AuthApiExceptionConverter;
+use Kreait\Firebase\Exception\AuthException;
 use Kreait\Firebase\Exception\Messaging\InvalidArgument;
 
 session_start();
@@ -120,16 +126,28 @@ if (isset($_POST['registeruser_btn'])) {
     $userfullaname = $_POST['userfname'] . ' ' . $_POST['userlname'];
     $roles = $_POST['role'];
     $userpassword = $_POST['userpassword'];
-
+    // generates random id for user
+    $randomgen = base64_encode(random_bytes(10));
+    $milliseconds = floor(microtime(true) * 1000);
+    $customuiid = $randomgen . $milliseconds;
     $userProperties = [
+        'uid' => $customuiid,
         'email' => $useremail,
         'emailVerified' => false,
         'password' => $userpassword,
         'displayName' => $userfullaname,
+        'disabled' => false,
     ];
     try {
         $createdUser = $auth->createUser($userProperties);
         if ($createdUser) {
+            if ($roles == "admin") {
+                $auth->setCustomUserClaims($customuiid, ['admin' => true]);
+                $msg = "User role has been set to Administrator";
+            } elseif ($roles == "staff") {
+                $auth->setCustomUserClaims($customuiid, ['staff' => true]);
+                $msg = "User role has been set to Staff";
+            }
             $_SESSION['createdusersuccess'] = "Success!";
             header('Location: systemusers.php');
             exit();
@@ -139,6 +157,10 @@ if (isset($_POST['registeruser_btn'])) {
             exit();
         }
     } catch (InvalidArgumentException $e) {
+        $_SESSION['invalidemail'] = "Failed!";
+        header('Location: systemusers.php');
+        exit();
+    } catch (AuthException $error) {
         $_SESSION['invalidemail'] = "Failed!";
         header('Location: systemusers.php');
         exit();

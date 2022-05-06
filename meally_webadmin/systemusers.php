@@ -362,13 +362,13 @@ session_start();
                           <?php
                           $claims = $auth->getUser($user->uid)->customClaims;
                           if (isset($claims['admin']) == true) {
-                            echo "Administrator";
+                            echo "<span class='badge badge-sm bg-gradient-danger'>Admin</span>";
                           } elseif (isset($claims['staff']) == true) {
-                            echo "Staff";
+                            echo "<span class='badge badge-sm bg-gradient-info'>Staff</span>";
                           } elseif (isset($claims['customer']) == true) {
-                            echo "Customer";
+                            echo "<span class='badge badge-sm bg-gradient-success'>Customer</span>";
                           } elseif (isset($claims['shop-owner']) == true) {
-                            echo "Shop Owner";
+                            echo "<span class='badge badge-sm bg-gradient-success'>Admin</span>";
                           }
 
                           ?>
@@ -426,8 +426,8 @@ session_start();
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <select name="role" class="form-control">
-                    <option value="Staff">Staff</option>
-                    <option value="Administrator">Administrator</option>
+                    <option value="staff">Staff</option>
+                    <option value="admin">Administrator</option>
                   </select>
                 </div>
                 <div class="input-group input-group-outline mb-3">
