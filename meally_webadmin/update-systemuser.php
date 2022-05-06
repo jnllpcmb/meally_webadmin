@@ -196,8 +196,21 @@ session_start();
                       <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                       <span aria-hidden='true'>&times;</span>
                       </button>
-                  </div>";
+                        </div>";
                         unset($_SESSION['newpass']);
+                    }
+                    ?>
+                    <!-- change user role message  -->
+                    <?php
+                    if (isset($_SESSION['userrolefail'])) {
+                        echo
+                        "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['userrolefail'] . " </strong></span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+                        unset($_SESSION['userrolefail']);
                     }
                     ?>
                     <!-- edit account information form  -->
@@ -242,7 +255,6 @@ session_start();
                             </form>
                         </div>
                     </div>
-
                     <!-- edit account password  -->
                     <div class="card my-5">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -271,6 +283,88 @@ session_start();
                                         </div>
                                         <div class="text-left">
                                             <button type="submit" name="updateuserpassword_btn" class="btn bg-gradient-primary my-2 mb-2">Change Password</button>
+                                        </div>
+                                <?php
+                                    } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
+                                        echo $e->getMessage();
+                                    }
+                                }
+
+                                ?>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- enable/disable accout  -->
+                    <div class="card my-5">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-3 pb-2">
+                                <h6 class="text-white text-capitalize ps-3" id="cnu"> Disable Account</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-5">
+                            <form action="code.php" method="POST" role="form" class="text-start">
+                                <?php
+                                include('dbcon.php');
+
+                                if (isset($_GET['id'])) {
+                                    $uid = $_GET['id'];
+                                    try {
+                                        $user = $auth->getUser($uid);
+                                ?>
+                                        <input type="hidden" name="enabledisable-user-id" value="<?= $uid; ?>">
+                                        <div class="input-group input-group-outline my-3">
+                                            <select name="enabledisable" class="form-control">
+                                                <option value="">Select Value</option>
+                                                <option value="enable">Enable</option>
+                                                <option value="disable">Disable</option>
+                                            </select>
+                                        </div>
+                                        <div class="text-left">
+                                            <button type="submit" name="eduser_btn" class="btn bg-gradient-primary my-2 mb-2">Update</button>
+                                        </div>
+                                <?php
+                                    } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
+                                        echo $e->getMessage();
+                                    }
+                                }
+
+                                ?>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- edit account type/privelege  -->
+                    <div class="card my-5">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-3 pb-2">
+                                <h6 class="text-white text-capitalize ps-3" id="cnu"> Disable Account</h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-5">
+                            <form action="code.php" method="POST" role="form" class="text-start">
+                                <?php
+                                include('dbcon.php');
+
+                                if (isset($_GET['id'])) {
+                                    $uid = $_GET['id'];
+                                    try {
+                                        $user = $auth->getUser($uid);
+                                ?>
+                                        <input type="hidden" name="usertype-user-id" value="<?= $uid; ?>">
+                                        <div class="input-group input-group-outline my-3">
+                                            <select name="roles" class="form-control" required>
+                                                <option value="">Select Value</option>
+                                                <option value="admin">Administrator</option>
+                                                <option value="staff">Staff</option>
+                                            </select>
+                                        </div>
+                                        <div class="text-left">
+                                            <button type="submit" name="usertype_btn" class="btn bg-gradient-primary my-2 mb-2">Update</button>
                                         </div>
                                 <?php
                                     } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {

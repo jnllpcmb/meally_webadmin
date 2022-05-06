@@ -6,6 +6,52 @@ use Kreait\Firebase\Exception\Messaging\InvalidArgument;
 session_start();
 include('dbcon.php');
 
+// edit user type 
+if (isset($_POST['usertype_btn'])) {
+    $uid = $_POST['usertype-user-id'];
+    $roles = $_POST['roles'];
+
+    if ($roles == "admin") {
+        $auth->setCustomUserClaims($uid, ['admin' => true]);
+        $msg = "User role has been set to Administrator";
+    } elseif ($roles == "staff") {
+        $auth->setCustomUserClaims($uid, ['staff' => true]);
+        $msg = "User role has been set to Staff";
+    } else {
+    }
+    if ($msg) {
+        $_SESSION['usersuccess'] = $msg;
+        header('Location: systemusers.php');
+        exit();
+    } else {
+        $_SESSION['userrolefail'] = "Failed! Invalid input.";
+        header("Location: update-systemuser.php?id=$uid");
+        exit();
+    }
+}
+
+
+// enable or disable user 
+if (isset($_POST['eduser_btn'])) {
+    $enable_disable = $_POST['enabledisable '];
+    $uid = $_POST['enabledisable-user-id'];
+    if ($enable_disable == "disable") {
+        $updatedUser = $auth->disableUser($uid);
+        $msg = "Success! Account Disabled!";
+    } else {
+        $updatedUser = $auth->enableUser($uid);
+        $msg = "Success! Account Enabled!";
+    }
+    if ($updatedUser) {
+        $_SESSION['enabledisablesuccess'] = $msg;
+        header('Location: systemusers.php');
+        exit();
+    } else {
+        $_SESSION['enabledisablefailed'] = "Failed! Invalid input.";
+        header('Location: systemusers.php');
+        exit();
+    }
+}
 // update userpassword 
 if (isset($_POST['updateuserpassword_btn'])) {
     $newpassowrd = $_POST['newpassword'];
@@ -72,7 +118,7 @@ if (isset($_POST['removeuser_btn'])) {
 if (isset($_POST['registeruser_btn'])) {
     $useremail = $_POST['useremail'];
     $userfullaname = $_POST['userfname'] . ' ' . $_POST['userlname'];
-    //$userprivelege = $_POST['userprivelege'];
+    $roles = $_POST['role'];
     $userpassword = $_POST['userpassword'];
 
     $userProperties = [

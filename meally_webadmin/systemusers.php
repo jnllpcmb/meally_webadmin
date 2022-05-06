@@ -289,6 +289,32 @@ session_start();
         unset($_SESSION['passwordchangesfailed']);
       }
       ?>
+      <!-- enable disable message  -->
+      <?php
+      if (isset($_SESSION['enabledisablesuccess'])) {
+        echo
+        "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['enabledisablesuccess'] . "</strong></span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['enabledisablesuccess']);
+      }
+      ?>
+      <?php
+      // change user role message 
+      if (isset($_SESSION['usersuccess'])) {
+        echo
+        "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['usersuccess'] . "</strong></span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['usersuccess']);
+      }
+      ?>
       <!-- Users Table Start -->
       <div class="row">
         <div class="col-12">
@@ -316,6 +342,7 @@ session_start();
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fullname</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Type</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Controls</th>
                     </tr>
@@ -331,6 +358,23 @@ session_start();
                         <td class="align-middle text-center text-sm"><?= $i++; ?></td>
                         <td class="align-middle text-center text-sm"><?= $user->displayName ?></td>
                         <td class="align-middle text-center text-sm"><?= $user->email ?></td>
+                        <td class="align-middle text-center text-sm">
+                          <?php
+                          $claims = $auth->getUser($user->uid)->customClaims;
+                          if (isset($claims['admin']) == true) {
+                            echo "Administrator";
+                          } elseif (isset($claims['staff']) == true) {
+                            echo "Staff";
+                          } elseif (isset($claims['customer']) == true) {
+                            echo "Customer";
+                          } elseif (isset($claims['shop-owner']) == true) {
+                            echo "Shop Owner";
+                          }
+
+                          ?>
+
+
+                        </td>
                         <td class="align-middle text-center text-sm">
                           <?php
                           if ($user->disabled) {
@@ -381,7 +425,7 @@ session_start();
                   <input type="text" name="userlname" class="form-control" required>
                 </div>
                 <div class="input-group input-group-outline my-3">
-                  <select name="userprivelege" class="form-control">
+                  <select name="role" class="form-control">
                     <option value="Staff">Staff</option>
                     <option value="Administrator">Administrator</option>
                   </select>
