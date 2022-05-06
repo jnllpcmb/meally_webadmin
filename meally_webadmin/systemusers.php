@@ -354,46 +354,48 @@ session_start();
                     $i = 1;
                     foreach ($users as $user) {
                     ?>
-                      <tr>
-                        <td class="align-middle text-center text-sm"><?= $i++; ?></td>
-                        <td class="align-middle text-center text-sm"><?= $user->displayName ?></td>
-                        <td class="align-middle text-center text-sm"><?= $user->email ?></td>
-                        <td class="align-middle text-center text-sm">
-                          <?php
-                          $claims = $auth->getUser($user->uid)->customClaims;
-                          if (isset($claims['admin']) == true) {
-                            echo "<span class='badge badge-sm bg-gradient-danger'>Admin</span>";
-                          } elseif (isset($claims['staff']) == true) {
-                            echo "<span class='badge badge-sm bg-gradient-info'>Staff</span>";
-                          } elseif (isset($claims['customer']) == true) {
-                            echo "<span class='badge badge-sm bg-gradient-success'>Customer</span>";
-                          } elseif (isset($claims['shop-owner']) == true) {
-                            echo "<span class='badge badge-sm bg-gradient-success'>Admin</span>";
-                          }
-
-                          ?>
-
-
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <?php
-                          if ($user->disabled) {
-                            echo "<span class='badge badge-sm bg-gradient-secondary'>Disabled</span>";
-                          } else {
-                            echo "<span class='badge badge-sm bg-gradient-success'>Enabled</span>";
-                          }
-                          ?>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <form action="code.php" method="POST">
-                            <a href="update-systemuser.php?id=<?= $user->uid; ?>" class="btn btn-info btn-sm">
-                              Edit
-                            </a>
-                            <button type="submit" class="btn btn-danger btn-sm" name="removeuser_btn" value="<?= $user->uid; ?>">REMOVE
-                            </button>
-                          </form>
-                        </td>
-                      </tr>
+                      <!-- remove current user from the list -->
+                      <?php if ($user->displayName !== "Super Adminss") {
+                      ?>
+                        <tr>
+                          <td class="align-middle text-center text-sm"><?= $i++; ?></td>
+                          <td class="align-middle text-center text-sm"><?= $user->displayName; ?></td>
+                          <td class="align-middle text-center text-sm"><?= $user->email ?></td>
+                          <td class="align-middle text-center text-sm">
+                            <?php
+                            $claims = $auth->getUser($user->uid)->customClaims;
+                            if (isset($claims['admin']) == true) {
+                              echo "<span class='badge badge-sm bg-gradient-danger'>Admin</span>";
+                            } elseif (isset($claims['staff']) == true) {
+                              echo "<span class='badge badge-sm bg-gradient-info'>Staff</span>";
+                            } elseif (isset($claims['customer']) == true) {
+                              echo "<span class='badge badge-sm bg-gradient-success'>Customer</span>";
+                            } elseif (isset($claims['shop-owner']) == true) {
+                              echo "<span class='badge badge-sm bg-gradient-success'>Admin</span>";
+                            }
+                            ?>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <?php
+                            if ($user->disabled) {
+                              echo "<span class='badge badge-sm bg-gradient-secondary'>Disabled</span>";
+                            } else {
+                              echo "<span class='badge badge-sm bg-gradient-success'>Enabled</span>";
+                            }
+                            ?>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <form action="code.php" method="POST">
+                              <a href="update-systemuser.php?id=<?= $user->uid; ?>" class="btn btn-info btn-sm">
+                                Edit
+                              </a>
+                              <button type="submit" class="btn btn-danger btn-sm" name="removeuser_btn" value="<?= $user->uid; ?>">REMOVE
+                              </button>
+                            </form>
+                          </td>
+                        </tr>
+                      <?php }
+                      ?>
                     <?php
                     }
                     ?>
