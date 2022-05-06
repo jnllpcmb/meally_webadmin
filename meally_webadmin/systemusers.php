@@ -185,20 +185,110 @@ session_start();
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-2">
-      <!-- Start : Login success welcome message -->
+      <!-- Start : Created user success  message -->
       <?php
       if (isset($_SESSION['createdusersuccess'])) {
         echo
         "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
-                    <span class='alert-text'><strong>" . $_SESSION['createdusersuccess'] . " User has been created!</strong></span>
+                    <span class='alert-text'><strong>" . $_SESSION['createdusersuccess'] . "</strong> User has been created!</span>
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>";
         unset($_SESSION['createdusersuccess']);
       }
+      if (isset($_SESSION['createduserfailed'])) {
+        echo
+        "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
+                    <span class='alert-text'><strong>" . $_SESSION['createduserfailed'] . "</strong> The action performed wasn't successful. Please try again.</span>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>";
+        unset($_SESSION['createduserfailed']);
+      }
+      if (isset($_SESSION['invalidemail'])) {
+        echo
+        "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
+                    <span class='alert-text'><strong>" . $_SESSION['invalidemail'] . "</strong> The action performed wasn't successful. Please try again.</span>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                    </button>
+                </div>";
+        unset($_SESSION['invalidemail']);
+      }
       ?>
-      <!-- End : Login success welcome message -->
+
+      <!-- Start : Deleted user success  message -->
+      <?php
+      if (isset($_SESSION['deletedusersuccess'])) {
+        echo
+        "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['deletedusersuccess'] . " User has been removed!</strong></span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['deletedusersuccess']);
+      }
+      if (isset($_SESSION['deleteduserfailed'])) {
+        echo
+        "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['deleteduserfailed'] . "</strong> The action performed wasn't successful. Please try again.</span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['deleteduserfailed']);
+      }
+      ?>
+
+      <!-- Start : updated user account info success  message -->
+      <?php
+      if (isset($_SESSION['updatedusersucess'])) {
+        echo
+        "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['updatedusersucess'] . "</strong> User has been removed!</span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['updatedusersucess']);
+      }
+      if (isset($_SESSION['updateduserfailed'])) {
+        echo
+        "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['updateduserfailed'] . " </strong>The action performed wasn't successful. Please try again.</span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['updateduserfailed']);
+      }
+      ?>
+      <!-- updated user account password  message -->
+      <?php
+      if (isset($_SESSION['passwordchangessuccess'])) {
+        echo
+        "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['passwordchangessuccess'] . "</strong> Password hsa been successfully updated!</span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['passwordchangessuccess']);
+      }
+      if (isset($_SESSION['passwordchangesfailed'])) {
+        echo
+        "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
+                      <span class='alert-text'><strong>" . $_SESSION['passwordchangesfailed'] . " </strong>The action performed wasn't successful. Please try again.</span>
+                      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                      </button>
+                  </div>";
+        unset($_SESSION['passwordchangesfailed']);
+      }
+      ?>
       <!-- Users Table Start -->
       <div class="row">
         <div class="col-12">
@@ -223,10 +313,11 @@ session_start();
                 <table id="example" class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fullname</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Controls</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fullname</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Controls</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -237,16 +328,27 @@ session_start();
                     foreach ($users as $user) {
                     ?>
                       <tr>
-                        <td><?=$i++; ?></td>
-                        <td><?=$user->displayName ?></td>
-                        <td><?=$user->email ?></td>
-                        <td>
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Remove
-                        </a></td>
+                        <td class="align-middle text-center text-sm"><?= $i++; ?></td>
+                        <td class="align-middle text-center text-sm"><?= $user->displayName ?></td>
+                        <td class="align-middle text-center text-sm"><?= $user->email ?></td>
+                        <td class="align-middle text-center text-sm">
+                          <?php
+                          if ($user->disabled) {
+                            echo "<span class='badge badge-sm bg-gradient-secondary'>Disabled</span>";
+                          } else {
+                            echo "<span class='badge badge-sm bg-gradient-success'>Enabled</span>";
+                          }
+                          ?>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <form action="code.php" method="POST">
+                            <a href="update-systemuser.php?id=<?= $user->uid; ?>" class="btn btn-info btn-sm">
+                              Edit
+                            </a>
+                            <button type="submit" class="btn btn-danger btn-sm" name="removeuser_btn" value="<?= $user->uid; ?>">REMOVE
+                            </button>
+                          </form>
+                        </td>
                       </tr>
                     <?php
                     }
@@ -268,15 +370,15 @@ session_start();
                 <h6 class=" text-left mt-1 mb-0 text-sm">Please complete the fields below:</h6>
                 <div class="input-group input-group-outline my-3">
                   <label class="form-label">Email</label>
-                  <input type="email" name="useremail" class="form-control">
+                  <input type="email" name="useremail" class="form-control" required>
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <label class="form-label">First Name</label>
-                  <input type="text" name="userfname" class="form-control">
+                  <input type="text" name="userfname" class="form-control" required>
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <label class="form-label">Last Name</label>
-                  <input type="text" name="userlname" class="form-control">
+                  <input type="text" name="userlname" class="form-control" required>
                 </div>
                 <div class="input-group input-group-outline my-3">
                   <select name="userprivelege" class="form-control">
@@ -286,7 +388,7 @@ session_start();
                 </div>
                 <div class="input-group input-group-outline mb-3">
                   <label class="form-label">Password</label>
-                  <input type="password" name="userpassword" class="form-control">
+                  <input type="password" name="userpassword" class="form-control" required>
                 </div>
                 <div class="text-left">
                   <button type="submit" name="registeruser_btn" class="btn bg-gradient-primary my-2 mb-2">Create User</button>
@@ -294,9 +396,8 @@ session_start();
               </form>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- Users Table End  -->
+
+          <!-- Users Table End  -->
   </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">

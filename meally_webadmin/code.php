@@ -6,7 +6,69 @@ use Kreait\Firebase\Exception\Messaging\InvalidArgument;
 session_start();
 include('dbcon.php');
 
+// update userpassword 
+if (isset($_POST['updateuserpassword_btn'])) {
+    $newpassowrd = $_POST['newpassword'];
+    $retypepassword = $_POST['retypepassword'];
+    $uid = $_POST['changepass-user-id'];
 
+    if ($newpassowrd == $retypepassword) {
+        $updatedUser = $auth->changeUserPassword($uid, $newpassowrd);
+        if ($updatedUser) {
+            $_SESSION['passwordchangessuccess'] = "Success!";
+            header('Location: systemusers.php');
+            exit();
+        } else {
+            $_SESSION['passwordchangesfailed'] = "Failed!";
+            header('Location: systemusers.php');
+            exit();
+        }
+    } else {
+        $_SESSION['newpass'] = "Failed!";
+        header("Location: update-systemuser.php?id=$uid");
+        exit();
+    }
+}
+// update user account info
+if (isset($_POST['updateuser_btn'])) {
+    $email = $_POST['display_useremail'];
+    $displayName = $_POST['display_userfullname'];
+    $uid = $_POST['user-id'];
+    $properties = [
+        'displayName' => $displayName,
+        'email' =>  $email,
+    ];
+
+    $updatedUser = $auth->updateUser($uid, $properties);
+    // $updatedUser = $auth->changeUserEmail($uid, $properties);
+
+    if ($updatedUser) {
+        $_SESSION['updatedusersucess'] = "Success!";
+        header('Location: systemusers.php');
+        exit();
+    } else {
+        $_SESSION['updateduserfailed'] = "Failed!";
+        header('Location: systemusers.php');
+        exit();
+    }
+}
+// remove user 
+if (isset($_POST['removeuser_btn'])) {
+
+    $uid = $_POST['removeuser_btn'];
+    try {
+        $auth->deleteUser($uid);
+        $_SESSION['deletedusersuccess'] = "Success!";
+        header('Location: systemusers.php');
+        exit();
+    } catch (Exception $e) {
+        $_SESSION['deleteduserfailed'] = "Failed!";
+        header('Location: systemusers.php');
+        exit();
+    }
+}
+
+// register user 
 if (isset($_POST['registeruser_btn'])) {
     $useremail = $_POST['useremail'];
     $userfullaname = $_POST['userfname'] . ' ' . $_POST['userlname'];
@@ -19,21 +81,26 @@ if (isset($_POST['registeruser_btn'])) {
         'password' => $userpassword,
         'displayName' => $userfullaname,
     ];
-
-    $createdUser = $auth->createUser($userProperties);
-    if ($createdUser) {
-        $_SESSION['createdusersuccess'] = "Success!";
-        header('Location: systemusers.php');
-        exit();
-    } else {
-        $_SESSION['createdusersuccess'] = "Failed!";
+    try {
+        $createdUser = $auth->createUser($userProperties);
+        if ($createdUser) {
+            $_SESSION['createdusersuccess'] = "Success!";
+            header('Location: systemusers.php');
+            exit();
+        } else {
+            $_SESSION['createduserfailed'] = "Failed!";
+            header('Location: systemusers.php');
+            exit();
+        }
+    } catch (InvalidArgumentException $e) {
+        $_SESSION['invalidemail'] = "Failed!";
         header('Location: systemusers.php');
         exit();
     }
 }
 
 
-
+// sign-in 
 if (isset($_POST['signin_btn'])) {
     $email = $_POST['user-emailaddress'];
     $password = $_POST['user-password'];
@@ -75,4 +142,3 @@ if (isset($_POST['signin_btn'])) {
     header('Location: sign-in.php');
     exit();
 }
-?>
