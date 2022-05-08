@@ -156,7 +156,7 @@ include('authentication.php');
                   </a>
                 </li>
                 <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                  <a class="dropdown-item border-radius-md" href="signout.php">
                     <div class="d-flex py-1">
                       <div class="my-auto">
                       </div>
