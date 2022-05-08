@@ -182,12 +182,12 @@ if (isset($_POST['signin_btn'])) {
                     $verifiedIdToken = $auth->verifyIdToken($idTokenString);
                     $uid = $verifiedIdToken->claims()->get('sub');
                     $user = $auth->getUser($uid);
+                    $_SESSION['user'] = $user->displayName;
                     $claims = $auth->getUser($uid)->customClaims;
                     if (isset($claims['admin']) == true) {
                         $_SESSION['admincontrol'] = "true";
                         $_SESSION['verified-admin'] = true;
                         $_SESSION['verified-uid'] = $uid;
-                        $_SESSION['user'] = $user->displayName;
                         $_SESSION['idTokenString'] = $idTokenString;
                     } elseif (isset($claims['staff']) == true) {
                         $_SESSION['verified-uid'] = $uid;
