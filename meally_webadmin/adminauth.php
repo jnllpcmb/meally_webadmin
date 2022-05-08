@@ -12,8 +12,9 @@ if (isset($_SESSION['verified-uid'])) {
         $idTokenString = $_SESSION['idTokenString'];
         $claims = $auth->getUser($uid)->customClaims;
         if (isset($claims['admin']) == true) {
+            $_SESSION['admincontrol'] = "true";
         } else {
-            header('Location: signout .php');
+            header('Location: signout.php');
             exit();
         }
         try {

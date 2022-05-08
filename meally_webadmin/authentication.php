@@ -8,7 +8,10 @@ include('dbcon.php');
 if (isset($_SESSION['verified-uid'])) {
     $uid = $_SESSION['verified-uid'];
     $idTokenString = $_SESSION['idTokenString'];
-
+    $claims = $auth->getUser($uid)->customClaims;
+    if (isset($claims['admin']) == true) {
+        $_SESSION['admincontrol'] = "true";
+    }
     try {
         $verifiedIdToken = $auth->verifyIdToken($idTokenString);
     } catch (InvalidToken $e) {

@@ -183,6 +183,7 @@ if (isset($_POST['signin_btn'])) {
                     $uid = $verifiedIdToken->claims()->get('sub');
                     $claims = $auth->getUser($uid)->customClaims;
                     if (isset($claims['admin']) == true) {
+                        $_SESSION['admincontrol'] = "true";
                         $_SESSION['verified-admin'] = true;
                         $_SESSION['verified-uid'] = $uid;
                         $_SESSION['idTokenString'] = $idTokenString;
