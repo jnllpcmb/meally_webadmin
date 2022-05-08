@@ -245,7 +245,7 @@ if ($link) {
                                             <input type="email" name="display_useremail" value="<?= $user->email; ?>" class="form-control" required>
                                         </div>
                                         <div class="input-group input-group-static mb-4">
-                                            <label>First Name</label>
+                                            <label>Fullname</label>
                                             <input type="text" name="display_userfullname" value="<?= $user->displayName; ?>" class="form-control" required>
                                         </div>
                                         <div class="text-left">
@@ -256,11 +256,7 @@ if ($link) {
                                         echo $e->getMessage();
                                     }
                                 }
-
                                 ?>
-
-
-
                             </form>
                         </div>
                     </div>
@@ -350,11 +346,7 @@ if ($link) {
                                         echo $e->getMessage();
                                     }
                                 }
-
                                 ?>
-
-
-
                             </form>
                         </div>
                     </div>

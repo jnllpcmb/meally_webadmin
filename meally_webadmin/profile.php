@@ -13,6 +13,9 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+<?php
+include('authentication.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -199,39 +202,17 @@
               </p>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-            <div class="nav-wrapper position-relative end-0">
-              <ul class="nav nav-pills nav-fill p-1" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link mb-0 px-0 py-1 active " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
-                    <i class="material-icons text-lg position-relative">home</i>
-                    <span class="ms-1">App</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
-                    <i class="material-icons text-lg position-relative">email</i>
-                    <span class="ms-1">Messages</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
-                    <i class="material-icons text-lg position-relative">settings</i>
-                    <span class="ms-1">Settings</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
         <div class="row">
           <div class="row">
+
+
             <div class="col-12">
               <div class="card card-plain h-100">
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-md-8 d-flex align-items-center">
-                      <h6 class="mb-0">Profile Information</h6>
+                      <h6 class="mb-0">Account Information</h6>
                     </div>
                     <div class="col-md-4 text-end">
                       <a href="javascript:;">
@@ -241,11 +222,74 @@
                   </div>
                 </div>
                 <div class="card-body p-3">
-                  <p class="text-sm">
-                    Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
-                  </p>
+                  <form action="code.php" method="POST" role="form" class="text-start">
+                    <?php
+                    include('dbcon.php');
+
+                    $uid = $_SESSION['verified-uid'];
+
+                    try {
+                      $user = $auth->getUser($uid);
+                    ?>
+                      <input type="hidden" name="user-id" value="<?= $uid; ?>">
+                      <div class="input-group input-group-static mb-4">
+                        <label>Email</label>
+                        <input type="email" name="display_useremail" value="<?= $user->email; ?>" class="form-control" required>
+                      </div>
+                      <div class="input-group input-group-static mb-4">
+                        <label>Fullname</label>
+                        <input type="text" name="display_userfullname" value="<?= $user->displayName; ?>" class="form-control" required>
+                      </div>
+                      <div class="input-group input-group-static mb-5">
+                        <label>Account Type</label>
+                        <select name="roles" class="form-control" required>
+                          <?php
+                          if (isset($claims['admin']) == true) {
+                            echo
+                            "<option value='admin' selected>Administrator</option>
+                            <option value='staff'>Staff</option>";
+                          } elseif (isset($claims['staff']) == true) {
+                            echo
+                            "<option value='admin'>Administrator</option>
+                            <option value='staff' selected>Staff</option>";
+                          }
+                          ?>
+                        </select>
+                      </div>
+
+                      <div class="card-header pb-3 p-0">
+                        <div class="row">
+                          <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-0">Change Password</h6>
+                          </div>
+                          <div class="col-md-4 text-end">
+                            <a href="javascript:;">
+                              <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="input-group input-group-static mb-4">
+                        <label>New Password</label>
+                        <input type="password" name="newpassword" class="form-control" required>
+                      </div>
+                      <div class="input-group input-group-static mb-4">
+                        <label>Re-type Password</label>
+                        <input type="password" name="retypepassword" class="form-control" required>
+                      </div>
+                      <div class="text-left">
+                        <button type="submit" name="updateuser_btn" class="btn bg-gradient-primary my-2 mb-2">Save Changes</button>
+                      </div>
+                    <?php
+                    } catch (\Kreait\Firebase\Exception\Auth\UserNotFound $e) {
+                      echo $e->getMessage();
+                    }
+                    ?>
+
+
+                  </form>
                 </div>
-                <input type="text" name="email" id="useremail">
               </div>
             </div>
           </div>
