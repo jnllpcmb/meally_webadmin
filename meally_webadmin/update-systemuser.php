@@ -14,7 +14,15 @@
 -->
 
 <?php
-session_start();
+include('authentication.php');
+$link = $_GET['id'];
+if ($link) {
+} else {
+    header("Location:javascript://history.go(-1)");
+    exit();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -227,6 +235,7 @@ session_start();
 
                                 if (isset($_GET['id'])) {
                                     $uid = $_GET['id'];
+
                                     try {
                                         $user = $auth->getUser($uid);
                                 ?>

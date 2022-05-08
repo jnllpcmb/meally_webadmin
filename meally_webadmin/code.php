@@ -167,7 +167,6 @@ if (isset($_POST['registeruser_btn'])) {
     }
 }
 
-
 // sign-in 
 if (isset($_POST['signin_btn'])) {
     $email = $_POST['user-emailaddress'];

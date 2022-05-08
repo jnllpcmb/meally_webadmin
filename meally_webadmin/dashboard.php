@@ -13,7 +13,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <?php
-session_start();
+include('authentication.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +53,7 @@ session_start();
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
-      <li class="nav-item mt-3">
+        <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Core</h6>
         </li>
         <li class="nav-item">
@@ -157,8 +157,8 @@ session_start();
                         <img src="assets/img/icons8-shutdown-50.png" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
-                      <h6 class="text-sm font-weight-normal mb-1">
-                        <span class="font-weight-bold" >Logout</span>
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">Logout</span>
                         </h6>
                         <p class="text-xs text-secondary mb-0">
                           See you soon?
@@ -169,7 +169,7 @@ session_start();
                 </li>
               </ul>
             </li>
-                
+
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -185,7 +185,7 @@ session_start();
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-    <div class="row">
+      <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-header p-3 pt-2">
@@ -209,7 +209,7 @@ session_start();
                 <i class="material-icons opacity-10">person</i>
               </div>
               <div class="text-end pt-1">
-              
+
                 <h4 class="mb-0">50</h4>
               </div>
             </div>
@@ -226,7 +226,7 @@ session_start();
                 <i class="material-icons opacity-10">person</i>
               </div>
               <div class="text-end pt-1">
-               
+
                 <h4 class="mb-0">52</h4>
               </div>
             </div>
@@ -253,63 +253,63 @@ session_start();
           </div>
         </div>
       </div>
-  <!-- New Stores Table -->
+      <!-- New Stores Table -->
       <div class="row mt-4">
         <!-- Start : Login success welcome message -->
-              <?php
-                  if(isset($_SESSION['status'])){
-                    echo 
-                    "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
+        <?php
+        if (isset($_SESSION['status'])) {
+          echo
+          "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
                     <span class='alert-icon align-middle'>
                       <span class='material-icons text-md'>
                       thumb_up_off_alt
                       </span>
                     </span>
-                    <span class='alert-text'><strong>".$_SESSION['status']."</strong></span>
+                    <span class='alert-text'><strong>" . $_SESSION['status'] . "</strong></span>
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>";
-                    unset($_SESSION['status']);
-                  }
-              ?>
-          <!-- End : Login success welcome message -->
-          <div class="row">
-        <div class="col-12">
-          <div class="card my-4">
-            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg pt-3 pb-2">
-                <h6 class="text-white text-capitalize ps-3"> New stores to be verified</h6>
+          unset($_SESSION['status']);
+        }
+        ?>
+        <!-- End : Login success welcome message -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card my-4">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-3 pb-2">
+                  <h6 class="text-white text-capitalize ps-3"> New stores to be verified</h6>
+                </div>
               </div>
-            </div>
-            <div class="card-body px-5">
-              <div class="table-responsive p-0">
-                <table id ="example" class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Owner</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Store Name</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Registered</th>
-                      <th class="text-secondary opacity-7"></th>
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
+              <div class="card-body px-5">
+                <div class="table-responsive p-0">
+                  <table id="example" class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Owner</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Store Name</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Registered</th>
+                        <th class="text-secondary opacity-7"></th>
+                        <th class="text-secondary opacity-7"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
                           <div class="d-flex px-3">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex px-0">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td class="align-middle text-center">
@@ -325,21 +325,21 @@ session_start();
                             Remove
                           </a>
                         </td>
-                    </tr>
-                    <tr>
-                      <td>
+                      </tr>
+                      <tr>
+                        <td>
                           <div class="d-flex px-3">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex px-0">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td class="align-middle text-center">
@@ -355,21 +355,21 @@ session_start();
                             Remove
                           </a>
                         </td>
-                    </tr>
-                    <tr>
-                      <td>
+                      </tr>
+                      <tr>
+                        <td>
                           <div class="d-flex px-3">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex px-0">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td class="align-middle text-center">
@@ -385,21 +385,21 @@ session_start();
                             Remove
                           </a>
                         </td>
-                    </tr>
-                    <tr>
-                      <td>
+                      </tr>
+                      <tr>
+                        <td>
                           <div class="d-flex px-3">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex px-0">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td class="align-middle text-center">
@@ -415,21 +415,21 @@ session_start();
                             Remove
                           </a>
                         </td>
-                    </tr>
-                    <tr>
-                      <td>
+                      </tr>
+                      <tr>
+                        <td>
                           <div class="d-flex px-3">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex px-0">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td class="align-middle text-center">
@@ -445,21 +445,21 @@ session_start();
                             Remove
                           </a>
                         </td>
-                    </tr>
-                    <tr>
-                      <td>
+                      </tr>
+                      <tr>
+                        <td>
                           <div class="d-flex px-3">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="d-flex px-0">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td>
                           <div class="align-middle text-center text-sm">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
                           </div>
                         </td>
                         <td class="align-middle text-center">
@@ -475,14 +475,14 @@ session_start();
                             Remove
                           </a>
                         </td>
-                    </tr>
-                  </tbody>
-                </table>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-    </div>
       </div>
 
   </main>
@@ -544,9 +544,9 @@ session_start();
             <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
           </div>
         </div>
-        </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Datatable script -->
@@ -561,9 +561,9 @@ session_start();
   <script src="assets/js/plugins/chartjs.min.js"></script>
   <script>
     $(document).ready(function() {
-    $('#example').DataTable();
+      $('#example').DataTable();
 
-} );
+    });
   </script>
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");

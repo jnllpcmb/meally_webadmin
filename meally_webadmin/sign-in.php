@@ -14,6 +14,11 @@
 -->
 <?php
 session_start();
+
+if (isset($_SESSION['verified-uid'])) {
+  header("Location:javascript://history.go(-1)");
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,49 +53,49 @@ session_start();
         <div class="row">
 
           <div class="col-lg-4 col-md-8 col-12 mx-auto">
-          <?php
-                  if(isset($_SESSION['error-status'])){
-                    echo 
-                    "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
+            <?php
+            if (isset($_SESSION['error-status'])) {
+              echo
+              "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='color:white;'>
                     <span class='alert-icon align-middle'>
                     </span>
-                    <span class='alert-text'><strong>".$_SESSION['error-status']."</strong></span>
+                    <span class='alert-text'><strong>" . $_SESSION['error-status'] . "</strong></span>
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>";
-                    unset($_SESSION['error-status']);
-                  }
-                    ?>
+              unset($_SESSION['error-status']);
+            }
+            ?>
 
-                     <?php
-                  if(isset($_SESSION['logoutstatus'])){
-                    echo 
-                    "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
+            <?php
+            if (isset($_SESSION['logoutstatus'])) {
+              echo
+              "<div class='alert alert-success alert-dismissible fade show' role='alert' style='color:white;'>
                     <span class='alert-icon align-middle'>
                       <span class='material-icons text-md'>
                       thumb_up_off_alt
                       </span>
                     </span>
-                    <span class='alert-text'><strong>".$_SESSION['logoutstatus']."</strong></span>
+                    <span class='alert-text'><strong>" . $_SESSION['logoutstatus'] . "</strong></span>
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                         <span aria-hidden='true'>&times;</span>
                     </button>
                 </div>";
-                    unset($_SESSION['logoutstatus']);
-                  }
-                    ?>
+              unset($_SESSION['logoutstatus']);
+            }
+            ?>
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-body">
-                  <form action="code.php" method="POST" class="text-start">
+                <form action="code.php" method="POST" class="text-start">
                   <h4 class="text-black font-weight-bolder text-center mt-2 mb-0">Sign in</h4>
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Email</label>
-                    <input type="email" name ="user-emailaddress" class="form-control">
+                    <input type="email" name="user-emailaddress" class="form-control">
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name ="user-password" class="form-control">
+                    <input type="password" name="user-password" class="form-control">
                   </div>
                   <div class="form-check form-switch d-flex align-items-center mb-3">
                     <input class="form-check-input" type="checkbox" id="rememberMe">
@@ -116,7 +121,7 @@ session_start();
                 </script>,
                 made with <i class="fa fa-heart" aria-hidden="true"></i> by
                 <a href="#" class="font-weight-bold text-white" target="_blank">ChowRev Inc.</a>
-                
+
               </div>
             </div>
             <div class="col-12 col-md-6">
@@ -124,7 +129,7 @@ session_start();
                 <li class="nav-item">
                   <a href="#" class="nav-link text-white" target="_blank">meally</a>
                 </li>
-               
+
                 <li class="nav-item">
                   <a href="#" class="nav-link text-white" target="_blank">Blog</a>
                 </li>

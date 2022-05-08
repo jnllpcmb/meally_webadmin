@@ -14,7 +14,7 @@
 -->
 
 <?php
-session_start();
+include('authentication.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -355,7 +355,7 @@ session_start();
                     foreach ($users as $user) {
                     ?>
                       <!-- remove current user from the list -->
-                      <?php if ($user->displayName !== "Super Adminss") {
+                      <?php if ($user->displayName !== "Joe Doe") {
                       ?>
                         <tr>
                           <td class="align-middle text-center text-sm"><?= $i++; ?></td>
@@ -386,7 +386,7 @@ session_start();
                           </td>
                           <td class="align-middle text-center text-sm">
                             <form action="code.php" method="POST">
-                              <a href="update-systemuser.php?id=<?= $user->uid; ?>" class="btn btn-info btn-sm">
+                              <a href="update-systemuser.php?id=<?= $user->uid; ?>" name="edit_btn" class="btn btn-info btn-sm">
                                 Edit
                               </a>
                               <button type="submit" class="btn btn-danger btn-sm" name="removeuser_btn" value="<?= $user->uid; ?>">REMOVE
