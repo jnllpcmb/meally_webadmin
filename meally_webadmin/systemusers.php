@@ -130,7 +130,7 @@ include('adminauth.php');
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user me-sm-1 cursor-pointer"></i>
-                <span class="d-sm-inline d-none">First Name</span>
+                <span class="d-sm-inline d-none"><?= $_SESSION['user']; ?></span>
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
@@ -355,7 +355,7 @@ include('adminauth.php');
                     foreach ($users as $user) {
                     ?>
                       <!-- remove current user from the list -->
-                      <?php if ($user->displayName !== "Joe Doe") {
+                      <?php if ($user->displayName !==  $_SESSION['user']) {
                       ?>
                         <tr>
                           <td class="align-middle text-center text-sm"><?= $i++; ?></td>

@@ -136,7 +136,7 @@ include('authentication.php');
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-user me-sm-1 cursor-pointer"></i>
-                <span class="d-sm-inline d-none">First Name</span>
+                <span class="d-sm-inline d-none"><?= $_SESSION['user']; ?></span>
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
@@ -271,7 +271,7 @@ include('authentication.php');
                       thumb_up_off_alt
                       </span>
                     </span>
-                    <span class='alert-text'><strong>" . $_SESSION['status'] . "</strong></span>
+                    <span class='alert-text'><strong>" . $_SESSION['status'] . "</strong> — Welcome back " . $_SESSION['user'] . "</span>
                     <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'>
                         <span aria-hidden='true'>&times;</span>
                     </button>
