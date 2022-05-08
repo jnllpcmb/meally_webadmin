@@ -14,7 +14,7 @@ if (isset($_SESSION['verified-uid'])) {
     } catch (InvalidToken $e) {
         echo 'The token is invalid: ' . $e->getMessage();
         $_SESSION['expired-status'] = "Session Expired";
-        header('Location: logout.php');
+        header('Location: signout.php');
     }
 } else {
     header('Location: sign-in.php');

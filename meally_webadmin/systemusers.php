@@ -14,7 +14,7 @@
 -->
 
 <?php
-include('authentication.php');
+include('adminauth.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

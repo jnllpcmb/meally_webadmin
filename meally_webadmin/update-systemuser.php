@@ -14,7 +14,7 @@
 -->
 
 <?php
-include('authentication.php');
+include('adminauth.php');
 $link = $_GET['id'];
 if ($link) {
 } else {
