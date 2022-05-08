@@ -143,7 +143,6 @@ include('authentication.php');
                   <a class="dropdown-item border-radius-md" href="profile.php">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="assets/img/icons8-settings-50.png" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
@@ -160,7 +159,6 @@ include('authentication.php');
                   <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                       <div class="my-auto">
-                        <img src="assets/img/icons8-shutdown-50.png" class="avatar avatar-sm  me-3 ">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
                         <h6 class="text-sm font-weight-normal mb-1">
