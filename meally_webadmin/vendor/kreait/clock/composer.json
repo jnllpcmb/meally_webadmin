@@ -10,8 +10,7 @@
         }
     ],
     "require": {
-        "php": "^7.0|^8.0",
-        "stella-maris/clock": "^0.1.4"
+        "php": "^7.0|^8.0"
     },
     "autoload": {
         "psr-4": {
